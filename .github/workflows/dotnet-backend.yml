@@ -28,6 +28,11 @@ jobs:
       run: dotnet test --no-build --verbosity normal
     - name: Publish Artifacts 
       run: dotnet publish ${{ env.PROJECT_PATH }} -c Release --no-restore -o publish
+    - name: Main
+      run: |
+        ls
+        cd publish
+        ls
     - name: Setup Zip
       uses: montudor/action-zip@v1
     - name: Zip Artifacts
