@@ -27,7 +27,7 @@ jobs:
       working-directory: ${{ env.PROJECT_PATH }}
       run: dotnet test --no-build --verbosity normal
     - name: Publish Artifacts 
-      run: dotnet publish ${{ env.PROJECT_PATH }} -c Release --self-contained --no-restore
+      run: dotnet publish ${{ env.PROJECT_PATH }} -c Release --no-restore
     - name: Setup Zip
       uses: montudor/action-zip@v1
     - name: Zip Artifacts
