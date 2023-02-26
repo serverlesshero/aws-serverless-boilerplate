@@ -36,11 +36,12 @@ jobs:
       uses: montudor/action-zip@v1
     - name: Zip Artifacts
       run: zip -qq -r zips/lambda.zip publish
-    - uses: shallwefootball/s3-upload-action@master
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
       with:
-        aws_key_id: ${{ secrets.AWS_KEY_ID }}
-        aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
-        aws_bucket: serverlesshero-releases
-        source_dir: zips/
-        destination_dir: dotnet/lambda/
-    
+        aws-access-key-id: ${{ secrets.AWS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ap-south-1
+    - name: Main
+      run: |
+        aws s3 cp zips/lambda.zip s3://serverlesshero-releases/dotnet/lambda  
