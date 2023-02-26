@@ -28,7 +28,7 @@ jobs:
       run: dotnet test --no-build --verbosity normal
     - name: Publish Artifacts 
       run: dotnet publish ${{ env.PROJECT_PATH }} -c Release --no-restore -o publish
-    - name: Main
+    - name: Running some Linux Commands
       run: |
         mkdir zips
         ls
@@ -42,6 +42,6 @@ jobs:
         aws-access-key-id: ${{ secrets.AWS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ap-south-1
-    - name: Main
+    - name: Upload to AWS S3
       run: |
-        aws s3 cp zips/lambda.zip s3://serverlesshero-releases/dotnet/lambda  
+        aws s3 cp zips/lambda.zip s3://serverlesshero-releases/dotnet/lambda/release.zip
