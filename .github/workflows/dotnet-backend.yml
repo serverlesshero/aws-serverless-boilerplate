@@ -27,12 +27,11 @@ jobs:
       working-directory: ${{ env.PROJECT_PATH }}
       run: dotnet test --no-build --verbosity normal
     - name: Publish Artifacts 
-      run: dotnet publish ${{ env.PROJECT_PATH }} -c Release --no-restore
+      run: dotnet publish ${{ env.PROJECT_PATH }} -c Release --no-restore -o publish
     - name: Setup Zip
       uses: montudor/action-zip@v1
     - name: Zip Artifacts
-      run: zip -qq -r zips/lambda.zip .
-      working-directory: ${{ env.PROJECT_PATH }}bin/Release/net7.0/publish/
+      run: zip -qq -r publish/zip/lambda.zip publish 
     - uses: shallwefootball/s3-upload-action@master
       with:
         aws_key_id: ${{ secrets.AWS_KEY_ID }}
