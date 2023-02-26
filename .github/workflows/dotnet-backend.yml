@@ -36,7 +36,12 @@ jobs:
     - name: Setup Zip
       uses: montudor/action-zip@v1
     - name: Zip Artifacts
-      run: zip -qq -r zips/lambda.zip publish
+      run: zip -qq -r publish.zip publish
+    - name: Main
+      run: |
+        ls
+        cd publish
+        ls
     - uses: shallwefootball/s3-upload-action@master
       with:
         aws_key_id: ${{ secrets.AWS_KEY_ID }}
