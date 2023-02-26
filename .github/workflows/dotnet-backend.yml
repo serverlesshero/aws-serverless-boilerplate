@@ -30,18 +30,12 @@ jobs:
       run: dotnet publish ${{ env.PROJECT_PATH }} -c Release --no-restore -o publish
     - name: Main
       run: |
-        ls
-        cd publish
+        mkdir zips
         ls
     - name: Setup Zip
       uses: montudor/action-zip@v1
     - name: Zip Artifacts
-      run: zip -qq -r publish.zip publish
-    - name: Main
-      run: |
-        ls
-        cd publish
-        ls
+      run: zip -qq -r zips/lambda.zip publish
     - uses: shallwefootball/s3-upload-action@master
       with:
         aws_key_id: ${{ secrets.AWS_KEY_ID }}
