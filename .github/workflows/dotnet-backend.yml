@@ -1,0 +1,43 @@
+name: dotnet-backend
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]    
+env:
+  PROJECT_PATH: ./src/backend/dotnet/lambda/
+jobs:
+  publish-artifact:
+    name: Publish Artifact
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 7.0.x
+    - name: Restore dependencies
+      working-directory: ${{ env.PROJECT_PATH }}
+      run: dotnet restore
+    - name: Build
+      working-directory: ${{ env.PROJECT_PATH }}
+      run: dotnet build --no-restore
+    - name: Test
+      working-directory: ${{ env.PROJECT_PATH }}
+      run: dotnet test --no-build --verbosity normal
+    - name: Publish Artifacts 
+      run: dotnet publish ${{ env.PROJECT_PATH }} -c Release --self-contained --no-restore
+    - name: Setup Zip
+      uses: montudor/action-zip@v1
+    - name: Zip Artifacts
+      run: zip -qq -r zips/lambda.zip .
+      working-directory: ${{ env.PROJECT_PATH }}bin/Release/net7.0/publish/
+    - uses: shallwefootball/s3-upload-action@master
+      with:
+        aws_key_id: ${{ secrets.AWS_KEY_ID }}
+        aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
+        aws_bucket: serverlesshero-releases
+        source_dir: ${{ env.PROJECT_PATH }}bin/Release/net7.0/publish/zips/
+        destination_dir: dotnet/lambda/
+    
