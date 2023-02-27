@@ -1,16 +1,23 @@
 # Define the Lambda function
 resource "aws_lambda_function" "lambda" {
-  s3_bucket     = "serverlesshero-releases"
-  s3_key        = "lambdas/catalog-latest.zip"
-  function_name = var.function_name
-  role          = aws_iam_role.lambda_role.arn
-  handler       = var.function_handler
-  runtime       = var.runtime
+  s3_bucket        = var.s3_bucket_name
+  s3_key           = var.s3_key
+  function_name    = var.function_name
+  source_code_hash = data.aws_s3_object.package.body
+  role             = aws_iam_role.lambda_role.arn
+  handler          = var.function_handler
+  runtime          = var.runtime
   depends_on = [
     aws_iam_role_policy_attachment.lambda_policy_attachment,
     aws_iam_role.lambda_role
   ]
 }
+
+data "aws_s3_object" "package" {
+  bucket = var.s3_bucket_name
+  key    = var.s3_key
+}
+
 resource "aws_iam_role" "lambda_role" {
   name = "lambda-role" # Change to your desired role name
   assume_role_policy = jsonencode({
