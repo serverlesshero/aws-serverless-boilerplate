@@ -3,7 +3,7 @@ resource "aws_lambda_function" "lambda" {
   s3_bucket        = var.s3_bucket_name
   s3_key           = var.s3_key
   function_name    = var.function_name
-  source_code_hash = data.aws_s3_object.package.body
+  source_code_hash = data.aws_s3_object.package.etag
   role             = aws_iam_role.lambda_role.arn
   handler          = var.function_handler
   runtime          = var.runtime

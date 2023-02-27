@@ -13,6 +13,6 @@ public class ProductsController : ControllerBase
     [HttpGet]
     public IActionResult Get()
     {
-        return Ok("Hello From Products Endpoint!");
+        return Ok("Hello From Products!");
     }
 }
