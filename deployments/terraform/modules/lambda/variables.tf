@@ -17,3 +17,8 @@ variable "s3_key" {
 variable "runtime" {
   type = string
 }
+
+variable "enable_function_url" {
+  type    = bool
+  default = false
+}

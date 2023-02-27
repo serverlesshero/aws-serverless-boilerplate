@@ -34,6 +34,7 @@ resource "aws_iam_role" "lambda_role" {
   })
 }
 resource "aws_lambda_function_url" "function_url" {
+  count              = var.enable_function_url ? 1 : 0
   function_name      = aws_lambda_function.lambda.arn
   authorization_type = "NONE"
 }
