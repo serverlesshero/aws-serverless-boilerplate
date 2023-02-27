@@ -34,7 +34,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Publish Artifacts 
-      run: dotnet publish ${{ env.PROJECT_PATH }} -c Release --no-restore -o artifacts/publish/
+      run: dotnet publish ${{ env.PROJECT_PATH }} -c Release -o artifacts/publish/
   zip:
     name: Artifacts ZIP Generation
     runs-on: ubuntu-latest
