@@ -4,8 +4,8 @@
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>ServerlessHero.Lambda</RootNamespace>
-    <AssemblyName>ServerlessHero.Lambda</AssemblyName>
+    <RootNamespace>ServerlessHero.Lambdas.Catalog</RootNamespace>
+    <AssemblyName>ServerlessHero.Lambdas.Catalog</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
