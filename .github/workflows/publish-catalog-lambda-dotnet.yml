@@ -67,5 +67,5 @@ jobs:
         aws-region: ap-south-1
     - name: Upload to S3
       run: |
-        aws s3 cp catalog-latest.zip s3://serverlesshero-releases/dotnet/lambdas/catalog-latest.zip
+        aws s3 cp catalog-latest.zip s3://serverlesshero-releases/lambdas/catalog-latest.zip
     
