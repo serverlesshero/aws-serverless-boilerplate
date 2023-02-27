@@ -43,7 +43,7 @@ jobs:
     steps:    
     - name: Creating Required Directory
       run: |
-        mkdir artifacts/releases
+        mkdir artifacts/releases/
     - name: Setup Zip
       uses: montudor/action-zip@v1
     - name: Zip Artifacts
