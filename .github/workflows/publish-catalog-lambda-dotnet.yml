@@ -35,20 +35,15 @@ jobs:
     - uses: actions/checkout@v3
     - name: Publish Artifacts 
       run: dotnet publish ${{ env.PROJECT_PATH }} -c Release -o publish
-    - name: Creating Required Directory
-      run: |
-        mkdir -p artifacts
-        cd publish
-        ls
     - name: Setup Zip
       uses: montudor/action-zip@v1
     - name: Zip Artifacts
-      run: zip -qq -r artifacts/catalog-latest.zip publish
+      run: zip -r -qq catalog-latest.zip publish/** -j
     - name: Upload catalog-latest.zip for next job
       uses: actions/upload-artifact@v3
       with:
         name: catalog-latest.zip
-        path: artifacts/catalog-latest.zip
+        path: catalog-latest.zip
   upload-aws-s3:
     name: Upload to AWS S3
     runs-on: ubuntu-latest
