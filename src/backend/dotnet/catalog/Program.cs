@@ -22,5 +22,4 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.MapGet("/", () => "Hello from the .NET ServerlessHero Catalog Lambda!");
 app.Run();

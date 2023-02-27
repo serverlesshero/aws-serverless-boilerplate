@@ -4,10 +4,11 @@ module "general_storage" {
   bucket_tags = merge(var.common_tags)
 }
 
-module "catalog_lamnda" {
+module "catalog_lambda" {
   source           = "../../modules/lambda"
   function_name    = "catalog-lambda"
   function_handler = "ServerlessHero.Lambdas.Catalog"
-  s3_bucket_name   = "serverless-releases"
+  s3_bucket_name   = "serverlesshero-releases"
   s3_key           = "lambdas/catalog-latest.zip"
+  runtime          = "dotnet6"
 }
