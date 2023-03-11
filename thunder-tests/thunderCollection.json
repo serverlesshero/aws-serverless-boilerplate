@@ -1,0 +1,24 @@
+[
+  {
+    "_id": "a4b2d41c-2739-4ca0-b37f-429c5f9b778c",
+    "colName": "api-gateway",
+    "created": "2023-03-11T05:12:29.302Z",
+    "sortNum": 10000,
+    "folders": [
+      {
+        "_id": "c39d424d-90fc-490a-ba50-d371b33dfbe4",
+        "name": "catalog",
+        "containerId": "",
+        "created": "2023-03-11T05:13:17.147Z",
+        "sortNum": 10000
+      },
+      {
+        "_id": "73cb2910-bba7-403c-9d87-88608e0a60b7",
+        "name": "catalog",
+        "containerId": "",
+        "created": "2023-03-11T05:13:24.314Z",
+        "sortNum": 20000
+      }
+    ]
+  }
+]

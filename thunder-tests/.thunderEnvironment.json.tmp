@@ -1,0 +1,16 @@
+[
+  {
+    "_id": "72316312-4bfb-421d-bddf-950b268e33f6",
+    "name": "dev",
+    "default": true,
+    "sortNum": 10000,
+    "created": "2023-03-11T05:14:10.884Z",
+    "modified": "2023-03-11T05:14:10.884Z",
+    "data": [
+      {
+        "name": "gateway_url",
+        "value": "https://n1n5q49fkg.execute-api.ap-south-1.amazonaws.com/dev"
+      }
+    ]
+  }
+]
