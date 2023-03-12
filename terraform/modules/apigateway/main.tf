@@ -31,6 +31,7 @@ resource "aws_api_gateway_integration" "proxy_integration" {
   integration_http_method = "POST"
 }
 
+
 resource "aws_api_gateway_deployment" "stage" {
   depends_on = [
     aws_api_gateway_integration.proxy_integration

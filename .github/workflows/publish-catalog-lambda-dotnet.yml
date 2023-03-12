@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [ "main" ]    
 env:
-  PROJECT_PATH: ./src/backend/dotnet/catalog/
+  PROJECT_PATH: ./backend/catalog/
 jobs:
   build:
     name: .NET Build & Test
